@@ -5,16 +5,17 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import("./lib/ddd-steps-list-item.js");
+import "./lib/ddd-steps-list-item.js";
+
 /**
- * `ddd-steps-list`
+ * `ddd-steps-list-item`
  *
  * @demo index.html
- * @element ddd-steps-list
+ * @element ddd-steps-list-item
  */
 export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
-    return "ddd-steps-list";
+    return "ddd-steps-list-item";
   }
 
   constructor() {
@@ -28,7 +29,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/ddd-steps-list.ar.json", import.meta.url).href +
+        new URL("./locales/ddd-steps-list-item.ar.json", import.meta.url).href +
         "/../",
       locales: ["ar", "es", "hi", "zh"],
     });
@@ -59,7 +60,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
         }
         h3 span {
           font-size: var(
-            --ddd-steps-list-label-font-size,
+            --ddd-steps-list-item-label-font-size,
             var(--ddd-font-size-s)
           );
         }
