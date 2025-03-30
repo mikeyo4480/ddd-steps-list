@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import("./lib/ddd-steps-list-item.js");
+import "./ddd-steps-list-item.js";
 /**
  * `ddd-steps-list`
  *
@@ -20,18 +20,8 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/ddd-steps-list.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
+    this.description = "";
+    this.children = [];
   }
 
   // Lit reactive properties
@@ -39,6 +29,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      children: { type: Array },
     };
   }
 
@@ -49,8 +40,6 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
       css`
         :host {
           display: block;
-          color: var(--ddd-theme-primary);
-          background-color: var(--ddd-theme-accent);
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
@@ -63,6 +52,11 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-font-size-s)
           );
         }
+        .list {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+        }
       `,
     ];
   }
@@ -70,17 +64,45 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html` <div class="wrapper">
-      <h3><span>${this.t.title}:</span> ${this.title}</h3>
-      <slot></slot>
+      <h3><span>${this.t.title}</span> ${this.title}</h3>
+      <div class="list">
+        <slot id="list-slot"></slot>
+      </div>
     </div>`;
   }
+  updated(changedProperties) {
+    if (changedProperties.has("title")) {
+      this.countChildren();
+    }
+  }
 
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+  countChildren() {
+    const items = this.querySelectorAll("ddd-steps-list-item");
+    items.forEach((element, index) => {
+      element.count = index + 1;
+    });
+  }
+
+  validateChildren() {
+    const slot = this.shadowRoot.querySelector("#list-slot");
+    if (!slot) {
+      console.error("Slot #list-slot not found in shadowRoot.");
+      return;
+    }
+    const assignedElements = slot.assignedElements({
+      flatten: true,
+    }); /* Since the tags are inside a slot, we use assignedElements to find the tags in the slot. */
+    assignedElements.forEach((child) => {
+      if (child.tagName.toLowerCase() !== "ddd-steps-list-item") {
+        console.warn(`Invalid tag`);
+        child.remove();
+      }
+    });
+  }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
+    this.validateChildren();
   }
 }
 

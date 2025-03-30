@@ -3,9 +3,9 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDD, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "./lib/ddd-steps-list-item.js";
+import "./ddd-steps-list-item.js";
 
 /**
  * `ddd-steps-list-item`
@@ -13,7 +13,7 @@ import "./lib/ddd-steps-list-item.js";
  * @demo index.html
  * @element ddd-steps-list-item
  */
-export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
+export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
   static get tag() {
     return "ddd-steps-list-item";
   }
@@ -21,18 +21,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/ddd-steps-list-item.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
+    this.count = 0;
   }
 
   // Lit reactive properties
@@ -40,6 +29,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      count: { type: Number },
     };
   }
 
@@ -55,14 +45,39 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
+        }
+        .content {
+          display: block;
+          gap: var(--ddd-spacing-2);
         }
         h3 span {
           font-size: var(
             --ddd-steps-list-item-label-font-size,
             var(--ddd-font-size-s)
           );
+        }
+        .header-content {
+          display: inline-flex;
+          align-items: center;
+        }
+        .count {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: var(--ddd-theme-default-beaverBlue);
+          color: white;
+          font-size: 16px;
+          font-weight: bold;
+          margin-right: 8px;
         }
       `,
     ];
@@ -71,8 +86,14 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html` <div class="wrapper">
-      <h3><span>${this.t.title}:</span> ${this.title}</h3>
-      <slot></slot>
+      <div class="header-content">
+        <span class="count">${this.count}</span>
+        <h3><span>${this.t.title}</span> ${this.title}</h3>
+      </div>
+
+      <div class="content">
+        <slot></slot>
+      </div>
     </div>`;
   }
 
