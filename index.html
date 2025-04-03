@@ -23,38 +23,135 @@
         color: var(--ddd-theme-primary);
         text-align: center;
       }
+      ul.ddd-steps-list-bullets {
+        list-style-type: disc;
+        list-style-position: inside;
+      }
+      p,
+      ul,
+      li {
+        padding-left: 42px;
+      }
+      ddd-steps-list-item {
+        display: block;
+        flex-wrap: wrap;
+      }
+      .vl {
+        display: inline-block;
+        border-left: 2px dashed black;
+        margin-left: 24px;
+        height: 200px;
+        width: 20px;
+        vertical-align: top;
+      }
+      .content {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: -36px;
+      }
     </style>
     <title>ddd-steps-list</title>
   </head>
 
   <body>
     <h1>Start Planning Your Penn State Experience</h1>
-    <p>Take the next steps toward a future at Penn State. Find admission requirements, tuition and financial aid, and other information to get you ready to apply</p>
+    <p>
+      Take the next steps toward a future at Penn State. Find admission
+      requirements, tuition and financial aid, and other information to get you
+      ready to apply.
+    </p>
+
     <div id="items">
       <ddd-steps-list>
-        <p> I SHOUDLNT BE ABLE TO BE HERE</p>
-        <li>AM I BEING RENDERED?</li>
-        <ddd-steps-list-item data-primary="7" title="Choose your enrollment period">
-            <p>You will need to complete the FASFA each year for financial aid consideration:</p>
-          <ul>
+        <ddd-steps-list-item
+          data-primary="1"
+          title="Choose your enrollment period"
+        >
+          <div class="vl"></div>
+          <div class="content">
+            <p>
+              You will need to complete the FAFSA each year for financial aid
+              consideration:
+            </p>
+            <ul class="ddd-steps-list-bullets">
               <li>Summer 2024</li>
               <li>Fall 2024/Spring 2025</li>
-          </ul>
+            </ul>
+          </div>
         </ddd-steps-list-item>
-        <ddd-steps-list-item data-primary="7" title="Get Help">
-            <p>Utilitize these resources for assistance with Federal Aid:</p>
-          <ul>
-              <li>Call the Federal Student Aid Information Center at 1-800-433-3243</li>
-              <li>Visit the Federal Student Aid (FSA) site at <a href="https://studentaid.gov/h/apply-for-aid/fafsa" target="_blank">FASFA: Applying for Aid</a></li>
-          </ul>
+
+        <ddd-steps-list-item data-primary="1" title="Get Help">
+          <div class="vl"></div>
+          <div class="content">
+            <p>Utilize these resources for assistance with Federal Aid:</p>
+            <ul class="ddd-steps-list-bullets">
+              <li>
+                Call the Federal Student Aid Information Center at
+                1-800-433-3243
+              </li>
+              <li>
+                Visit the Federal Student Aid (FSA) site at
+                <a
+                  href="https://studentaid.gov/h/apply-for-aid/fafsa"
+                  target="_blank"
+                  >FAFSA: Applying for Aid</a
+                >
+              </li>
+              <li>Follow Federal Student Aid on YouTube</li>
+            </ul>
+          </div>
         </ddd-steps-list-item>
-        <ddd-steps-list-item data-primary="7" title="Choose your enrollment period">
-            <p>You will need to complete this before the Fall 2025 semester...</p>
-          <ul>
-              <li>Thing 1</li>
-          </ul>
+
+        <ddd-steps-list-item data-primary="1" title="Ensure Receipt of Email">
+          <div class="content">
+            <p>
+              Ensure your email settings allow messages from these addresses:
+            </p>
+            <ul class="ddd-steps-list-bullets">
+              <li>
+                <a href="mailto:osa-noreply@psu.edu">osa-noreply@psu.edu</a>
+              </li>
+              <li><a href="mailto:OSAAward@psu.edu">OSAAward@psu.edu</a></li>
+              <li>
+                <a href="mailto:FederalStudentAidFASFA@cpsemail.ed.gov"
+                  >FederalStudentAidFASFA@cpsemail.ed.gov</a
+                >
+              </li>
+              <li>
+                <a href="mailto:FederalStudentAidPIN@cpsemail.ed.gov"
+                  >FederalStudentAidPIN@cpsemail.ed.gov</a
+                >
+              </li>
+            </ul>
+          </div>
+        </ddd-steps-list-item>
+
+        <ddd-steps-list-item
+          data-primary="1"
+          title="Review Your Student Aid Report"
+        >
+          <div class="content">
+            <p>
+              After submitting the FAFSA, you'll receive a Student Aid Report
+              (SAR) via email.
+            </p>
+            <ul class="ddd-steps-list-bullets">
+              <li>
+                Verify all information is correct and make necessary corrections
+                through the FAFSA website.
+              </li>
+              <li>
+                For questions, contact the Federal Student Aid information
+                center at 1-800-433-3243 and provide your DRN number from the
+                SAR.
+              </li>
+              <li>Print the revised copy for your records.</li>
+            </ul>
+          </div>
         </ddd-steps-list-item>
       </ddd-steps-list>
+    </div>
+
     <script type="module" src="./ddd-steps-list.js"></script>
   </body>
 </html>

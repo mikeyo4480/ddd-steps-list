@@ -45,12 +45,12 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
           font-family: var(--ddd-font-navigation);
         }
         .wrapper {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+          display: block;
+          /* flex-direction: column; */
+          /* align-items: flex-start; */
           gap: var(--ddd-spacing-2);
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
+          margin: 0 var(--ddd-spacing-2);
+          padding: 0 var(--ddd-spacing-4);
         }
         .content {
           display: block;
@@ -62,6 +62,9 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
             var(--ddd-font-size-s)
           );
         }
+        h3 {
+          margin: 0px 16px;
+        }
         .header-content {
           display: inline-flex;
           align-items: center;
@@ -70,12 +73,12 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
           display: inline-flex;
           justify-content: center;
           align-items: center;
-          width: 32px;
-          height: 32px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
           background-color: var(--ddd-theme-default-beaverBlue);
           color: white;
-          font-size: 16px;
+          font-size: 24px;
           font-weight: bold;
           margin-right: 8px;
         }
@@ -87,8 +90,12 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
   render() {
     return html` <div class="wrapper">
       <div class="header-content">
-        <span class="count">${this.count}</span>
-        <h3><span>${this.t.title}</span> ${this.title}</h3>
+        <span class="count">
+          ${this.count}
+        </span>
+        <h3>
+          <span>${this.t.title}</span> ${this.title}
+        </h3>
       </div>
 
       <div class="content">

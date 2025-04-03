@@ -53,8 +53,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
           );
         }
         .list {
-          display: flex;
-          flex-direction: column;
+          display: block;
           gap: var(--ddd-spacing-2);
         }
       `,
