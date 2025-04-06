@@ -46,8 +46,6 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
         }
         .wrapper {
           display: block;
-          /* flex-direction: column; */
-          /* align-items: flex-start; */
           gap: var(--ddd-spacing-2);
           margin: 0 var(--ddd-spacing-2);
           padding: 0 var(--ddd-spacing-4);
@@ -90,12 +88,8 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
   render() {
     return html` <div class="wrapper">
       <div class="header-content">
-        <span class="count">
-          ${this.count}
-        </span>
-        <h3>
-          <span>${this.t.title}</span> ${this.title}
-        </h3>
+        <span class="count"> ${this.count} </span>
+        <h3><span>${this.t.title}</span> ${this.title}</h3>
       </div>
 
       <div class="content">

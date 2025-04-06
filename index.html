@@ -40,14 +40,29 @@
         display: inline-block;
         border-left: 2px dashed black;
         margin-left: 24px;
-        height: 200px;
+        height: 230px;
         width: 20px;
         vertical-align: top;
+      }
+      .container {
+        border-left: 2px dashed black;
+        margin-left: 24px;
+      }
+      :host(:last-child) .vl {
+        height: 400px;
       }
       .content {
         display: inline-block;
         vertical-align: top;
         margin-left: -36px;
+      }
+
+      #items img {
+        max-width: 100%;
+        width: 800px;
+        height: 500px;
+        display: block;
+        margin-left: 100px;
       }
     </style>
     <title>ddd-steps-list</title>
@@ -103,6 +118,7 @@
         </ddd-steps-list-item>
 
         <ddd-steps-list-item data-primary="1" title="Ensure Receipt of Email">
+          <div class="vl"></div>
           <div class="content">
             <p>
               Ensure your email settings allow messages from these addresses:
@@ -130,23 +146,29 @@
           data-primary="1"
           title="Review Your Student Aid Report"
         >
-          <div class="content">
-            <p>
-              After submitting the FAFSA, you'll receive a Student Aid Report
-              (SAR) via email.
-            </p>
-            <ul class="ddd-steps-list-bullets">
-              <li>
-                Verify all information is correct and make necessary corrections
-                through the FAFSA website.
-              </li>
-              <li>
-                For questions, contact the Federal Student Aid information
-                center at 1-800-433-3243 and provide your DRN number from the
-                SAR.
-              </li>
-              <li>Print the revised copy for your records.</li>
-            </ul>
+          <div class="container">
+            <div class="content">
+              <p>
+                After submitting the FAFSA, you'll receive a Student Aid Report
+                (SAR) via email.
+              </p>
+              <ul class="ddd-steps-list-bullets">
+                <li>
+                  Verify all information is correct and make necessary
+                  corrections through the FAFSA website.
+                </li>
+                <li>
+                  For questions, contact the Federal Student Aid information
+                  center at 1-800-433-3243 and provide your DRN number from the
+                  SAR.
+                </li>
+                <li>Print the revised copy for your records.</li>
+              </ul>
+            </div>
+            <img
+              src="https://plus.unsplash.com/premium_photo-1664372145543-d60ba2756a7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG5vdGV8ZW58MHx8MHx8&w=1000&q=80"
+              alt="Writing Image"
+            />
           </div>
         </ddd-steps-list-item>
       </ddd-steps-list>
