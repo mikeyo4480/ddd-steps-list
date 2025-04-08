@@ -40,7 +40,7 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
       css`
         :host {
           display: block;
-          color: var(--ddd-theme-primary);
+
           background-color: var(--ddd-theme-accent);
           font-family: var(--ddd-font-navigation);
         }
@@ -53,12 +53,6 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
         .content {
           display: block;
           gap: var(--ddd-spacing-2);
-        }
-        h3 span {
-          font-size: var(
-            --ddd-steps-list-item-label-font-size,
-            var(--ddd-font-size-s)
-          );
         }
         h3 {
           margin: 0px 16px;
@@ -74,12 +68,37 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          background-color: var(--ddd-theme-default-beaverBlue);
+          background-color: var(--ddd-theme-primary);
           color: white;
           font-size: 24px;
           font-weight: bold;
           margin-right: 8px;
         }
+          .vl {
+          border-left: 2px dashed black;
+          height: 100%;
+          width: 2px;
+          margin-right: 16px;
+          }
+        @media (max-width: 600px) {
+          .wrapper {
+            padding: 0;
+          }
+          .header-content {
+            display: inline-flex;
+            flex-direction: row;
+            text-align: center;
+          }
+          .count {
+            margin: 0 auto;
+          }
+          h3 {
+            margin: 0px;
+          }
+          .content {
+            margin-left: 0px;
+            padding: 0 16px;
+          }
       `,
     ];
   }
@@ -87,9 +106,13 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
   // Lit render the HTML
   render() {
     return html` <div class="wrapper">
+      <div class="vl"></div>
       <div class="header-content">
-        <span class="count"> ${this.count} </span>
-        <h3><span>${this.t.title}</span> ${this.title}</h3>
+        <div class="count">${this.count}</div>
+        <h3>
+          <div>${this.t.title}</div>
+          ${this.title}
+        </h3>
       </div>
 
       <div class="content">
