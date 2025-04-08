@@ -69,20 +69,18 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
           height: 48px;
           border-radius: 50%;
           background-color: var(--ddd-theme-primary);
-          color: white;
-          font-size: 24px;
-          font-weight: bold;
-          margin-right: 8px;
+          color: var(--ddd-theme-default-white);
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          margin-right: var(--ddd-spacing-2);
         }
           .vl {
-          border-left: 2px dashed black;
-          height: 100%;
-          width: 2px;
-          margin-right: 16px;
+          border-left: 2px dashed var(--ddd-theme-default-limestoneGray);
+          margin-left: var(--ddd-spacing-6);
           }
         @media (max-width: 600px) {
           .wrapper {
-            padding: 0;
+            padding: var(--ddd-spacing-0);
           }
           .header-content {
             display: inline-flex;
@@ -90,14 +88,20 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
             text-align: center;
           }
           .count {
-            margin: 0 auto;
+            margin: var(--ddd-spacing-0);
+            margin-left: -30px;
           }
           h3 {
-            margin: 0px;
+            margin: var(--ddd-spacing-0);
           }
           .content {
-            margin-left: 0px;
+            margin-left: var(--ddd-spacing-0);
             padding: 0 16px;
+          }
+          img {
+            margin: var(--ddd-spacing-0);
+            width: 80%;
+            height: auto;
           }
       `,
     ];
@@ -106,17 +110,17 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
   // Lit render the HTML
   render() {
     return html` <div class="wrapper">
-      <div class="vl"></div>
+      <div class="count">${this.count}</div>
       <div class="header-content">
-        <div class="count">${this.count}</div>
         <h3>
           <div>${this.t.title}</div>
           ${this.title}
         </h3>
       </div>
-
-      <div class="content">
-        <slot></slot>
+      <div class="vl">
+        <div class="content">
+          <slot></slot>
+        </div>
       </div>
     </div>`;
   }

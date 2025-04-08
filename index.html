@@ -20,15 +20,17 @@
         margin: var(--ddd-spacing-2);
       }
       h1 {
-        color: var(--ddd-theme-primary);
+        color: var(--ddd-theme-default-beaverBlue);
         text-align: center;
       }
       ul.ddd-steps-list-bullets {
         list-style-type: disc;
         list-style-position: inside;
       }
-      p, ul, li {
-        padding-left: 112px;
+      p,
+      ul,
+      li {
+        padding-left: 90px;
       }
       ddd-steps-list-item {
         display: block;
@@ -39,14 +41,19 @@
         vertical-align: top;
         margin-left: -36px;
       }
+      .imgcaption {
+        font-size: small;
+        margin-left: 50px;
+      }
 
       #items img {
-        max-width: 100%;
-        width: 800px;
-        height: 500px;
+        width: 50%;
+        height: 50%;
         display: block;
-        margin-left: 100px;
+        margin-left: 140px;
       }
+
+
     </style>
     <title>ddd-steps-list</title>
   </head>
@@ -149,6 +156,7 @@
               src="https://plus.unsplash.com/premium_photo-1664372145543-d60ba2756a7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG5vdGV8ZW58MHx8MHx8&w=1000&q=80"
               alt="Writing Image"
             />
+            <p class="imgcaption"> The Office of Student Aid will also review your SAR and contact you if additional information is needed</p>
           </div>
         </ddd-steps-list-item>
       </ddd-steps-list>
