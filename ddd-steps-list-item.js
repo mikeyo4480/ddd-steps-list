@@ -74,10 +74,10 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
           font-weight: var(--ddd-font-weight-bold);
           margin-right: var(--ddd-spacing-2);
         }
-          .vl {
+        .vl {
           border-left: 2px dashed var(--ddd-theme-default-limestoneGray);
           margin-left: var(--ddd-spacing-6);
-          }
+        }
         @media (max-width: 600px) {
           .wrapper {
             padding: var(--ddd-spacing-0);
@@ -103,6 +103,28 @@ export class DddStepsList extends DDDPulseEffectSuper(I18NMixin(DDD)) {
             width: 80%;
             height: auto;
           }
+        }
+        @media screen and (max-width: 768px) {
+          .wrapper {
+            padding: var(--ddd-spacing-0);
+          }
+          .vl {
+            margin-left: var(--ddd-spacing-0);
+            border-left: none;
+          }
+        }
+
+        @media screen and (min-width: 1080px) {
+          .wrapper {
+            padding: var(--ddd-spacing-0);
+          }
+        }
+
+        @media screen and (min-width: 1440px) {
+          .wrapper {
+            padding: var(--ddd-spacing-0);
+          }
+        }
       `,
     ];
   }
